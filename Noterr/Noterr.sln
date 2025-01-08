@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noterr-PL", "Noterr-PL\Noterr-PL.csproj", "{5AC42885-4706-4218-9BBF-D6B5E3435AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noterr-DAL", "Noterr-DAL\Noterr-DAL.csproj", "{A1064022-3380-43EC-9FB7-8A4FF3896F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noterr-BLL", "Noterr-BLL\Noterr-BLL.csproj", "{F1A9A1D5-F366-4D85-9371-94FFE0736CE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AC42885-4706-4218-9BBF-D6B5E3435AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC42885-4706-4218-9BBF-D6B5E3435AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC42885-4706-4218-9BBF-D6B5E3435AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC42885-4706-4218-9BBF-D6B5E3435AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1064022-3380-43EC-9FB7-8A4FF3896F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1064022-3380-43EC-9FB7-8A4FF3896F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1064022-3380-43EC-9FB7-8A4FF3896F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1064022-3380-43EC-9FB7-8A4FF3896F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A9A1D5-F366-4D85-9371-94FFE0736CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A9A1D5-F366-4D85-9371-94FFE0736CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A9A1D5-F366-4D85-9371-94FFE0736CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A9A1D5-F366-4D85-9371-94FFE0736CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
