@@ -1,41 +1,68 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Noterr_DAL;
 
 namespace Noterr_BLL
 {
     public class NoteService : INoteService
     {
-        private readonly INoteRepository _noteRepository;
-
-        public NoteService(INoteRepository noteRepository)
+        private readonly INoteRepository _repository;
+        
+        public NoteService(INoteRepository repository)
         {
-            _noteRepository = noteRepository;
+            _repository = repository;
         }
-
+        
+        public async Task<List<Note>> GetAllNotesAsync()
+        {
+            var notes = await _repository.GetAllNotesAsync();
+            return notes.Select(n => new Note
+            {
+                Id = n.Id,
+                Title = n.Title,
+                Content = n.Content,
+                CreatedAt = n.CreatedAt
+            }).ToList();
+        }
+        
         public async Task<Note> GetNoteByIdAsync(int id)
         {
-            return await _noteRepository.GetNoteByIdAsync(id);
-        }
+            var note = await _repository.GetNoteByIdAsync(id);
+            if (note == null) return null;
 
-        public async Task<IEnumerable<Note>> GetAllNotesAsync()
-        {
-            return await _noteRepository.GetAllNotesAsync();
+            return new Note
+            {
+                Id = note.Id,
+                Title = note.Title,
+                Content = note.Content,
+                CreatedAt = note.CreatedAt
+            };
         }
-
-        public async Task AddNoteAsync(Note note)
+        
+        public async Task AddNoteAsync(string title, string content)
         {
-            await _noteRepository.AddNoteAsync(note);
+            var dalNote = new Noterr_DAL.Note
+            {
+                Title = title,
+                Content = content,
+                CreatedAt = DateTime.Now
+            };
+
+            await _repository.AddNoteAsync(dalNote);
         }
-
-        public async Task UpdateNoteAsync(Note note)
+        
+        public async Task UpdateNoteAsync(int id, string title, string content)
         {
-            await _noteRepository.UpdateNoteAsync(note);
+            var note = await _repository.GetNoteByIdAsync(id);
+            if (note != null)
+            {
+                note.Title = title;
+                note.Content = content;
+                await _repository.UpdateNoteAsync(note);
+            }
         }
-
-        public async Task DeleteNoteAsync(int id)
+        
+        public Task DeleteNoteAsync(int id)
         {
-            await _noteRepository.DeleteNoteAsync(id);
+            return _repository.DeleteNoteAsync(id);
         }
     }
 }

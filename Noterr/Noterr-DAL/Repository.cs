@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Noterr_DAL
 {
@@ -13,16 +11,16 @@ namespace Noterr_DAL
             _context = context;
         }
 
-        public async Task<Note> GetNoteByIdAsync(int id)
-        {
-            return await _context.Notes.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<Note>> GetAllNotesAsync()
+        public async Task<List<Note>> GetAllNotesAsync()
         {
             return await _context.Notes.ToListAsync();
         }
 
+        public async Task<Note> GetNoteByIdAsync(int id)
+        {
+            return await _context.Notes.FindAsync(id);
+        }
+        
         public async Task AddNoteAsync(Note note)
         {
             _context.Notes.Add(note);
@@ -37,7 +35,7 @@ namespace Noterr_DAL
 
         public async Task DeleteNoteAsync(int id)
         {
-            var note = await _context.Notes.FindAsync(id);
+            var note = await GetNoteByIdAsync(id);
             if (note != null)
             {
                 _context.Notes.Remove(note);
